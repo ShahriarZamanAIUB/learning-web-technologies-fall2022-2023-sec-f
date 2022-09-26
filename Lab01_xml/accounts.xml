@@ -1,0 +1,36 @@
+<accounts>
+
+	<account>
+		<SL.NO.>23</SL.NO.>
+		<NAME>John Carter</NAME>
+			<ADMISSION_DATE>
+				<DAY>25</DAY>
+				<MONTH>12</MONTH>		
+				<YEAR>2015</YEAR>		
+			</ADMISSION_DATE>
+	</account>
+
+
+	<account>
+		<SL.NO.>29</SL.NO.>
+		<NAME>Bob Marshal </NAME>
+			<ADMISSION_DATE>
+				<DAY>13</DAY>
+				<MONTH>01</MONTH>		
+				<YEAR>1999</YEAR>		
+			</ADMISSION_DATE>
+	</account>	
+
+	<account>
+		<SL.NO.>35</SL.NO.>
+		<NAME>Clark Kent</NAME>
+			<ADMISSION_DATE>
+				<DAY>17</DAY>
+				<MONTH>06</MONTH>		
+				<YEAR>2005</YEAR>		
+			</ADMISSION_DATE>
+	</account>
+
+
+
+</accounts>

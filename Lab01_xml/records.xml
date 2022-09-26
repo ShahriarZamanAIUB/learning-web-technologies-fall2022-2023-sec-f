@@ -1,0 +1,60 @@
+<records>
+	<record>
+	
+	<ID>1</ID>
+	<NAME>John Doe</NAME>
+		<ADDRESS>
+		
+			<FLAT></FLAT>
+			<HOUSE>H# 38,</HOUSE>
+			<ROAD>R# 3,</ROAD>
+			<AREA>Banani,</AREA>
+			<CITY>Dhaka</CITY>
+	
+		</ADDRESS>
+	<DEPARTMENT>Sales</DEPARTMENT>
+	<SALARY>$20000</SALARY>
+	
+	
+	</record>
+	
+	
+	<record>
+	
+	<ID>2</ID>
+	<NAME>Mark Zuckerburg</NAME>
+		<ADDRESS>
+			<FLAT>Flat# A1,</FLAT>
+			<HOUSE>H# 20,</HOUSE>
+			<ROAD>R# 18,</ROAD>
+			<AREA>Mirpur,</AREA>
+			<CITY>Dhaka</CITY>
+		
+		</ADDRESS>
+    <DEPARTMENT>Accounts</DEPARTMENT>
+	<SALARY>$12000</SALARY>
+	
+	
+	</record>
+	
+	
+	<record>
+	
+	<ID>3</ID>
+	<NAME>Ala Voski</NAME>
+		<ADDRESS>
+
+			<FLAT></FLAT>
+			<HOUSE>H# 38,</HOUSE>
+			<ROAD>R# 3,</ROAD>
+			<AREA>Motijheel</AREA>
+			<CITY></CITY>
+			
+		</ADDRESS>
+    <DEPARTMENT>Human Resource</DEPARTMENT>
+	<SALARY>$30000</SALARY>
+	
+	
+	</record>
+
+</records>
