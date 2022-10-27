@@ -1,10 +1,14 @@
- 
+<?php
+
+session_start();
+
+?> 
 
 
 
 <html>
     <head>
-        <title>Registration</title>
+        <title>Log In</title>
     </head>
     <body>
 	 
@@ -25,12 +29,12 @@
 	<tr><td>
         <fieldset style="width:350px">
 			<legend>LOGIN</legend>
-        <form method="post" action="namecheck.php" enctype="">
+        <form method="post" action="loginCheck.php" enctype="">
             Username: <input type="text" name="username" value=""/> <br>
-            Password: <input type="password" name="pass" value=""/> <br>
+            Password: <input type="password" name="password" value=""/> <br>
 			 <input type="checkbox" name=""/> Remember Me<br> <br>
              <input type="submit" name="btn" value="Submit"/>
-			 <a href=fp.html>Forgot Password?</a>
+			 <a href=forgotPassword.php>Forgot Password?</a>
         </form>
 		
 		</fieldset>
@@ -39,7 +43,7 @@
 		<tr>
 		 <td>
 		<p style="text-align:center;">  
-		Copyright © 2022
+		Copyright  Â© 2022
 		</p>
 		</td>
 		</tr>

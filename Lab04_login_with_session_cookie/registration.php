@@ -73,7 +73,7 @@
                         Confirm Password:
                     </td>
                     <td>
-                        <input type="password" name="confirmpassword" value=""><br>
+                        <input type="password" name="confirmPassword" value=""><br>
                     </td>
                 </tr>
                  
@@ -81,9 +81,9 @@
                     <td colspan="2">
                         <fieldset>
                             <legend>Gender :</legend> 
-                            <input type="radio" name="gender" value=""/>Male
-                            <input type="radio" name="gender" value=""/>Female
-                            <input type="radio" name="gender" value=""/>Other
+                            <input type="radio" name="gender" value="Male"/>Male
+                            <input type="radio" name="gender" value="Female"/>Female
+                            <input type="radio" name="gender" value="Other"/>Other
                         </fieldset>
                     </td>
                  </tr>
@@ -92,8 +92,8 @@
                     <td colspan="2">
                         <fieldset>
                             <legend>Date of Birth:</legend>
-                            <input type="number" name="" value="">/<input type="number" name="" value="">/  <input type="number" name="" value="">(dd/m/yyy)<br>
-                            <hr>
+                            <input type="number" name="day" value="">/<input type="number" name="month" value="">/  <input type="number" name="year" value="">(dd/m/yyy)<br>
+                            <br>
                             <input type="submit" name="submit" value="Submit">
                             <input type="reset" name="reset" value="Reset">
                         </fieldset>
@@ -109,7 +109,7 @@
 		<tr>
 		 <td>
 		<p style="text-align:center;">  
-		Copyright © 2022
+		Copyright Â© 2022
 		</p>
 		</td>
 		</tr>
