@@ -1,6 +1,3 @@
- 
-
-
 
 
 <html>
@@ -12,11 +9,31 @@
 	<table border="1">
 	
 	<tr><td><img src="logo.png" height="60px" width="200px"></img> 
-	
+
+    <h1>
+    <?php 
+
+if(isset($_GET['err']))
+{
+    if($_GET['err'] == 'null'){
+          echo "Please input all the fields properly!!!";  
+    }
+
+   else if($_GET['err'] == 'no_match'){
+        echo "Passwords do not match!!!";
+    }
+  
+}     
+
+?> </h1  >
+ 
 	<p style="text-align:right;"> 
 	<a href="home.php"> Home</a> 
 	<a href="login.php">&nbspLogin</a>
 	<a href="registration.php">&nbspRegistration</a>
+
+    
+
 	
 	</p>
 	</td>

@@ -1,6 +1,8 @@
-<?php
-
-session_start();
+<?php 
+    session_start();
+    if(!isset($_COOKIE['status'])){
+        header('location: login.php?err=bad_request');
+    }
 
 ?>
 
@@ -12,28 +14,42 @@ session_start();
     </head>
     <body>
 	 
-	<table border="1">
+	<table border="1" style="width:40%">
 	
-	<tr><td><img src="logo.png" height="60px" width="200px"></img> 
+	<tr  ><td><img src="logo.png" height="60px" width="200px"></img> 
+    <h1>
+        <?php 
+
+    if(isset($_GET['message']))
+   {
+    if($_GET['message'] == 'password_change_success'){
+          echo "Password Change Successful";  
+    }
+
+   else if($_GET['message'] == 'edit_profile_success'){
+    echo "Profile Editing Successful"; 
+    }  
+   }
+?>   </h1>
 	
 	<p style="text-align:right;"> 
-	<a href="home.php"> Home</a> 
-	<a href="login.php">&nbspLogin</a>
-	<a href="registration.php">&nbspRegistration</a>
+    <?php  echo "Logged in as ".$_SESSION['user']['username']." | " ?>
+	<a href="logout.php">&nbspLogOut</a>
+	 
 	
 	</p>
 	</td>
 	
-	  </tr>
+	  </tr  >
 	
-	<tr><td>
-        <fieldset style="width:350px">
+	<tr   ><td>
+        <fieldset  >
 			<legend>Dashboard</legend>
         <form method="post" action="" enctype="">
             
-			  <table border="1">
+			  <table border="1" style="width:100%">
 
-              <tr><td>
+              <tr><td  >
                       <ul>
 
                      <li><a href="dashboard.php">Dashboard</a></li>
@@ -47,7 +63,7 @@ session_start();
  
               </td>
 
-			  <td>
+			  <td  >
                 <h1> <?php
  
 					echo "Weclome, ".$_SESSION['user']['username'];

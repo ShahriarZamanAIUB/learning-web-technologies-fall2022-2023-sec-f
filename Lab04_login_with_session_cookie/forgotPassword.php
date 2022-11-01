@@ -1,4 +1,11 @@
- 
+<?php 
+    session_start();
+    if(!isset($_COOKIE['status'])){
+        header('location: login.php?err=bad_request');
+    }
+	 
+
+?> 
 
 
 
@@ -25,10 +32,10 @@
 	<tr><td>
         <fieldset style="width:350px">
 			<legend>Forgot Password</legend>
-        <form method="post" action="namecheck.php" enctype="">
-            Enter Email: <input type="email" name="username" value=""/> <br>
+        <form method="post" action="forgotPasswordCheck.php" enctype="">
+            Enter Email: <input type="email" name="email" value=""/> <br>
              
-			 <input type="checkbox" name=""/> Remember Me<br> <br>
+			 <input type="checkbox" name="checkbox"/>Remember Me<br> <br>
              <input type="submit" name="btn" value="Submit"/>
 			  
         </form>
@@ -39,7 +46,7 @@
 		<tr>
 		 <td>
 		<p style="text-align:center;">  
-		Copyright � 2022
+		Copyright © 2022
 		</p>
 		</td>
 		</tr>

@@ -2,6 +2,10 @@
 
 session_start();
 
+if(!isset($_COOKIE['status'])){
+  header('location: login.php?err=bad_request');
+}
+
 ?>
 
 
@@ -12,14 +16,14 @@ session_start();
     </head>
     <body>
 	 
-	<table border="1">
+	<table border="1" style="width:40%">
 	
 	<tr><td><img src="logo.png" height="60px" width="200px"></img> 
 	
 	<p style="text-align:right;"> 
-	<a href="home.php"> Home</a> 
-	<a href="login.php">&nbspLogin</a>
-	<a href="registration.php">&nbspRegistration</a>
+    <?php  echo "Logged in as ".$_SESSION['user']['username']." | " ?>
+	<a href="logout.php">&nbspLogOut</a>
+	 
 	
 	</p>
 	</td>
@@ -27,11 +31,11 @@ session_start();
 	  </tr>
 	
 	<tr><td>
-        <fieldset style="width:350px">
-			<legend>Dashboard</legend>
+        <fieldset  >
+			<legend>View Profile</legend>
         <form method="post" action="" enctype="">
             
-			  <table border="1">
+			  <table border="1"  style="width:100%">
 
               <tr><td>
                       <ul>
@@ -48,7 +52,7 @@ session_start();
               </td>
 
 			  <td>
-                   
+        <fieldset  >   <legend>Profile</legend>
  
                 <?php echo "Username: ".$_SESSION['user']['username'];?>  <br><br>
                 <?php    echo "Password: ".$_SESSION['user']['password'];?> <br><br>
@@ -57,7 +61,7 @@ session_start();
                 <?php    echo "Birthday: ".$_SESSION['user']['day'].'/'.$_SESSION['user']['month'].'/'.$_SESSION['user']['year'];?> <br>
 					    
 
-
+        </fieldset >
               </td>
               </tr>
 

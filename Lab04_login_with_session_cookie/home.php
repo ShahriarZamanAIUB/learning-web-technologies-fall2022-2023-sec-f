@@ -1,6 +1,10 @@
 <?php 
     session_start();
-       
+    if(!isset($_COOKIE['status'])){
+        header('location: login.php?err=bad_request');
+    }
+	else{ header('location: dashboard.php?err=bad_request'); }
+
 ?>
 
 
@@ -33,7 +37,7 @@
 		<tr>
 		 <td>
 		<p style="text-align:center;">  
-		Copyright © 2022
+		Copyright ï¿½ 2022
 		</p>
 		</td>
 		</tr>

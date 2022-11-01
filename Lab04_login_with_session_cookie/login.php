@@ -2,6 +2,8 @@
 
 session_start();
 
+ 
+
 ?> 
 
 
@@ -32,7 +34,7 @@ session_start();
         <form method="post" action="loginCheck.php" enctype="">
             Username: <input type="text" name="username" value=""/> <br>
             Password: <input type="password" name="password" value=""/> <br>
-			 <input type="checkbox" name=""/> Remember Me<br> <br>
+			 <input type="checkbox" name="checkbox"/> Remember Me<br> <br>
              <input type="submit" name="btn" value="Submit"/>
 			 <a href=forgotPassword.php>Forgot Password?</a>
         </form>

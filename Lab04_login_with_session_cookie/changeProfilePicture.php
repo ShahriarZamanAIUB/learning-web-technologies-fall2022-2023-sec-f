@@ -6,15 +6,13 @@ if(!isset($_COOKIE['status'])){
   header('location: login.php?err=bad_request');
 }
 
- 
-
 ?>
 
 
 
 <html>
     <head>
-        <title>Change Password</title>
+        <title>Profile Picture</title>
     </head>
     <body>
 	 
@@ -34,12 +32,12 @@ if(!isset($_COOKIE['status'])){
 	
 	<tr><td>
         <fieldset  >
-			<legend>Change Password</legend>
-        <form method="post" action="changePasswordCheck.php" enctype="">
+			<legend>Profile Picture</legend>
+        
             
 			  <table border="1"  style="width:100%">
 
-              <tr><td  >
+              <tr><td>
                       <ul>
 
                      <li><a href="dashboard.php">Dashboard</a></li>
@@ -54,28 +52,20 @@ if(!isset($_COOKIE['status'])){
               </td>
 
 			  <td>
+        <fieldset  >   <legend>Profile Picture</legend>
+        <img src="Profile_Picture.jpeg" height="120px" width="120px"></img> <br><br>
+        <form method="POST" action="uploadCheck.php" enctype="multipart/form-data" >
+            Image: <input type="file" name="myfile" value="" />
+                <input type="submit" name="submit" value="Submit"/>
+        </form>
+					    
 
-              <fieldset  >
-              <form method="post" action="changePasswordCheck.php" enctype=""> 
-		      <legend>CHANGE PASSWORD</legend>
-			 
-		
-                                Current Password:<input type="password" name="current_password" value=""/> <br>
-        <p style="color:green;">New Password    :  <input type="password" name="new_password"     value=""/> </p> 
-		  <p style="color:red;">Retype Password :<input type="password" name="retyped_password" value=""/></p>  <br> 
-                                                 <input type="submit" name="btn" value="Submit"/>
-                                                 <input type="reset" name="reset" value="Reset">
-			  
-			 
-              </form>	
-		     </fieldset>
-	 
-              
+        </fieldset >
               </td>
               </tr>
 
          </table>
-        </form>
+        
 		
 		</fieldset>
 		</td></tr>
