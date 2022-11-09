@@ -39,8 +39,8 @@ while($data  = mysqli_fetch_assoc($result)){  ?>
   <tr>
  <td><?php echo $data['name']?></td>      
  <td><?php echo $data['profit']?></td>        
- <td><a href='displayCheck.php?edit=<?php  echo $data['name'];?>' class='edit_btn' >edit</a></td>    
- <td><a href='displayCheck.php?edit=<?php  echo $data['name'];?>' class='delete_btn' >delete</a></td>    
+ <td><a href='editProduct.php?edit=<?php  echo $data['name'];?>' class='edit_btn' >edit</a></td>    
+ <td><a href='deleteProduct.php?delete=<?php  echo $data['name'];?>' class='delete_btn' >delete</a></td>    
  </tr>
 
  
