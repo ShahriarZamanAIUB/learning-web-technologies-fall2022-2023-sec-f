@@ -1,10 +1,23 @@
+<?php
+
+
+
+
+
+
+
+
+
+
+
+
 <html>
 <head>
-    <title>Add Product</title>
+    <title>Display</title>
 
     <body>
     <fieldset>
-    <legend>ADD PRODUCT</legend>
+    <legend>Display</legend>
          <table>
              
             <form method="post" action="addProductCheck.php" enctype=""> 
