@@ -1,50 +1,35 @@
 <?php
 
+echo "<title>Display</title>";
+
+echo "<fieldset><legend>Display</legend>";
 
 
+$con = mysqli_connect('localhost', 'root', '', 'product_db');
 
-
-
-
-
-
-
-
-
-<html>
-<head>
-    <title>Display</title>
-
-    <body>
-    <fieldset>
-    <legend>Display</legend>
-         <table>
-             
-            <form method="post" action="addProductCheck.php" enctype=""> 
-                
-                <table>
-                <tr><td>Name<br><input type="text" name="name"></input></td></tr>
-                    <tr><td>Buying Price<br><input type="text" name="buyingPrice"></input></td></tr>
-                    <tr><td>Selling Price<br><input type="text" name="sellingPrice"></input></td></tr>
-                    <tr><td><hr></td></tr>
-                    <tr><td><input type="radio" name="display" value="yes"></input>Display</td></tr>
-                    <tr><td><hr></td></tr>
-                    <tr><td><input type="submit" value="Submit" ></input> </td></tr>
-
-
-</form>
-</table>
-
-
+$sql = "select name, selling_price-buying_price profit from products where display='yes'";
+    $result = mysqli_query($con, $sql);
 
  
 
+    echo "<table border=1>
+    <tr>
+        <th>NAME</th>
+        <th>PROFIT</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+    </tr>";
 
+while($data  = mysqli_fetch_assoc($result)){
+echo    "<tr>
+            <td>{$data['name']}</td>        
+            <td>{$data['profit']}</td>        
+            <td><a href='edit.php' name='product_name' value={$data['name']}>edit</a></td>    
+            <td><a href='delete.php' name='productName' value={$data['name']}>delete</a></td>        
+        </tr>";
+}
 
- 
-</fieldset>
+echo "</table>";
 
-
-
-   </body>
-</html>
+echo "</fieldset>";
+?>
