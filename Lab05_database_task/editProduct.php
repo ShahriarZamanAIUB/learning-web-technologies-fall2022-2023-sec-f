@@ -18,6 +18,8 @@ session_start();
     <title>Edit Product</title>
 
     <body>
+    <a href="home.php">Home</a>&nbsp <a href="addProduct.php">Add Products </a> &nbsp <a href="display.php">Display Products </a>
+    <br><br>
     <fieldset>
     <legend>EDIT PRODUCT</legend>
          <table>
