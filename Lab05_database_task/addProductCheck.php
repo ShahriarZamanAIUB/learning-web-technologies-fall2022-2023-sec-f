@@ -22,9 +22,11 @@ else{  if($display!="yes"){$display="no";}
         $status = mysqli_query($con, $sql);
         
         if($status){
-            header('location: addProduct.php?message=adding_successful');
+            header('location: display.php?message=adding_successful');
         }else{
-           echo "Adding Failed!";
+           //echo "Adding Failed!";
+
+           header('location: display.php?err=adding_failed');
         }
 }
  

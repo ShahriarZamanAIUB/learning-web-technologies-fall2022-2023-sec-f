@@ -13,7 +13,7 @@ $row_name=$_COOKIE['row_name'];
 if($name=="" || $buying_price =="" || $selling_price==""  )
 {
 
-    header('location: displayCheck.php?err=null');
+    header('location: editProduct.php?err=null');
 
 }
 
@@ -27,8 +27,14 @@ else{  if($display!="yes"){$display="no";}
         
         if($status){
             header('location: display.php?message=update_successful');
+
+            setcookie('row_name',$row_name,time()-60,'/');
         }else{
            echo "Update Failed!";
+
+           setcookie('row_name',$row_name,time()-60,'/');
+
+           header('location: display.php?err=update_failed');
         }
 }
  
