@@ -1,0 +1,10 @@
+ 
+
+CREATE TABLE allusers (
+ username varchar(30),
+ password varchar(20), 
+ email varchar(30) primary key, 
+ address varchar(30),
+ balance int(8),
+ usertype varchar(20)
+)
