@@ -83,7 +83,7 @@
                                     <b> Username:</b>
                                     </td>
                                     <td>
-                                    <input style="width: 200px; height: 30px;" type="text" name="username" ID="username" value="" placeholder="Username" uonkeyp="usernameCheck()"> 
+                                    <input style="width: 200px; height: 30px;" type="text" name="username" ID="username" value="" placeholder="Username" onkeyup="usernameCheck()"> 
                                     </td>
                                 </tr>
                                 
@@ -165,9 +165,51 @@
          var retypedPasswordProblem=true;
          var addressProblem=true;
           
-         function isEmpty(str) {
-                    return !str.trim().length;
+         function isEmpty(str) { return !str.trim().length; }
+
+        function hasSpecialCharacters(string)
+            {
+                if(((string.split('!').length - 1)<1) && ((string.split('@').length - 1)<1) && ((string.split('#').length - 1)<1) && ((string.split('$').length - 1)<1) && ((string.split('%').length - 1)<1))
+                {  return false;
                 }
+
+                else{return true;}
+            }     
+
+            function checkAll(){  
+
+                let username = document.getElementById('username').value;
+                let email = document.getElementById('email').value;
+                let password = document.getElementById('password').value;
+                let retypedPassword = document.getElementById('retypedPassword').value;
+                let address = document.getElementById('address').value;
+
+                if(username=="" || email=="" || password=="" || retypedPassword=="" || address=="")
+                { 
+                // const form=document.getElementById("submissionForm");
+
+                //form.addEventListener('Submit',(event)=>{
+                    
+                    alert("Validation failed, cannot take null values!"); event.preventDefault();  
+
+                // })
+
+                
+                }
+
+                else if(usernameProblem==true||emailProblem==true||passwordProblem==true||retypedPasswordProblem==true||addressProblem==true ||(password!=retypedPassword))
+
+                {alert("Validation failed, fill up the fields properly!"); event.preventDefault(); }
+
+                else {  //return false;
+
+                alert("Validation Successful");
+                }
+
+
+                }
+
+
 
 
 
@@ -176,8 +218,9 @@
             //let username = document.getElementById('username').value;
             let input = document.getElementById('username');
             let username=input.value;
+            document.getElementsByTagName('h2')[0].innerHTML =username;
 
-             if(((username.split('!').length - 1)>0) || ((username.split('@').length - 1)>0) || ((username.split('#').length - 1)>0) || ((username.split('$').length - 1)>0) || ((username.split('%').length - 1)>0))
+             if(hasSpecialCharacters(username)==true)
               { usernameProblem=true;
                 document.getElementsByTagName('h2')[0].style.color = "red";
                 document.getElementsByTagName('h2')[0].innerHTML = "Warning: Username cannot have special characters (!,@,#,$,%)!";
@@ -254,38 +297,7 @@
 
 }
 
-         function checkAll(){  
-
-            let username = document.getElementById('username').value;
-            let email = document.getElementById('email').value;
-            let password = document.getElementById('password').value;
-            let retypedPassword = document.getElementById('retypedPassword').value;
-            let address = document.getElementById('address').value;
-
-            if(username=="" || email=="" || password=="" || retypedPassword=="" || address=="")
-            { 
-             // const form=document.getElementById("submissionForm");
-
-              //form.addEventListener('Submit',(event)=>{
-                
-                alert("Validation failed, cannot take null values!"); event.preventDefault();  
-            
-           // })
- 
-               
-            }
-
-       else if(usernameProblem==true||emailProblem==true||passwordProblem==true||retypedPasswordProblem==true||addressProblem==true)
-       
-       {alert("Validation failed, fill up the fields properly!"); event.preventDefault(); }
-
-        else {  //return false;
-
-            alert("Validation Successful");
-             }
-
-
-         }
+          
 
    
 

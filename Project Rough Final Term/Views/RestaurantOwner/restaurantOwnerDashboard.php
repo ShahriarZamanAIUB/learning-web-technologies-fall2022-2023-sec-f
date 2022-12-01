@@ -2,8 +2,14 @@
 
 session_start();
 
+require_once "../../Models/userModel.php";
+
+require_once "../../Models/restaurantModel.php";
+
+
+
 if(!isset($_COOKIE['status'])){
-  header('location: home.php?err=bad_request');
+  header('location: ../home.php?err=bad_request');
 }
 
 ?>
@@ -52,13 +58,13 @@ if(!isset($_COOKIE['status'])){
                       <ul style="line-height:250%">
 
                       <li><b><a href="restaurantOwnerDashboard.php">Dashboard</a><br></li>
-                    
+                      <li><a href="restaurantOwnerAddingRestaurantManagers.php">Add Managers</a><br></li>
                      <li><a href="restaurantOwnerAddingFoodItems.php">Add Food Item</a><br></li>
                      <li><a href="restaurantOwnerViewingMenu.php">View Menu</a><br></li>
                      <li><a href="restaurantOwnerViewingOrders.php">Approve Orders</a><br></li>
                      <li><a href="restaurantOwnerViewingProfile.php">View Profile</a></li>
                      <li><a href="editProfile.php">Edit Profile</a></li>
-                     <li><a href="logOut.php">LogOut</a></b></li>
+                     <li><a href="../../Controllers/logOut.php">LogOut</a></b></li>
 
                     </ul>
  
@@ -70,14 +76,14 @@ if(!isset($_COOKIE['status'])){
                         <td align="center">
                         <table border="1">    
                       <tr><td colspan="2" align="center"> 
-                        <?php  if(isset($_COOKIE['username']))
-                                    {   if(file_exists("restaurantDP/".$_COOKIE['restaurantName'].".jpg"))
-                                                      {echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="restaurantDP/'.trim($_COOKIE['restaurantName']).'.jpg?t='.time().'" height="120px" width="120px"></img><br><br>';} 
+                        <?php  if(isset($_COOKIE["restaurantName"]))
+                                    {   if(file_exists("../../Assets/restaurantDP/".$_COOKIE['restaurantName'].".jpg"))
+                                                      {echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/restaurantDP/'.trim($_COOKIE['restaurantName']).'.jpg?t='.time().'" height="120px" width="120px"></img><br><br>';} 
                             
-                                      else{            echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="Blank.jpg" height="120px" width="120px"></img><br><br>';    }
+                                      else{            echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/Blank.jpg" height="120px" width="120px"></img><br><br>';    }
                                     }
 
-                                 else{echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="Blank.jpg" height="120px" width="120px"></img><br><br>';}   
+                                 else{echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/Blank.jpg" height="120px" width="120px"></img><br><br>';}   
                         
                         ?> 
                          </td></tr>
@@ -115,7 +121,7 @@ if(!isset($_COOKIE['status'])){
                                 </tr>
 
                                 <tr align="center">
-                                    <td colspan="2"><a href="logOut.php"><p  style="color:red; font-size:20px;"><b>Log Out<b></p></a></td>
+                                    <td colspan="2"><a href="../../Controllers/logOut.php"><p  style="color:red; font-size:20px;"><b>Log Out<b></p></a></td>
                                 </tr>
                                  
                             </table>

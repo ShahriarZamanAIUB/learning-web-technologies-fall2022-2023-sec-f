@@ -66,7 +66,7 @@ if(!isset($_COOKIE['status'])){
                       <ul style="line-height:250%">
 
                       <li><b><a href="restaurantOwnerDashboard.php">Dashboard</a><br></li>
-                    
+                      <li><a href="restaurantOwnerAddingRestaurantManagers.php">Add Managers</a><br></li>
                      <li><a href="restaurantOwnerAddingFoodItems.php">Add Food Item</a><br></li>
                      <li><a href="restaurantOwnerViewingMenu.php">View Menu</a><br></li>
                      <li><a href="restaurantOwnerViewingOrders.php">Approve Orders</a><br></li>

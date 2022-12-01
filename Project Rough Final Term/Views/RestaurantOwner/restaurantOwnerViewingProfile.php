@@ -71,13 +71,13 @@ $_SESSION['calledFrom']['previousPage']='restaurantOwnerViewingProfile.php';
                                 <ul style="line-height:250%">
 
                                 <li><b><a href="restaurantOwnerDashboard.php">Dashboard</a><br></li>
-                
+                     <li><a href="restaurantOwnerAddingRestaurantManagers.php">Add Managers</a><br></li>
                      <li><a href="restaurantOwnerAddingFoodItems.php">Add Food Item</a><br></li>
                      <li><a href="restaurantOwnerViewingMenu.php">View Menu</a><br></li>
                      <li><a href="restaurantOwnerViewingOrders.php">Approve Orders</a><br></li>
                      <li><a href="restaurantOwnerViewingProfile.php">View Profile</a></li>
                      <li><a href="editProfile.php">Edit Profile</a></li>
-                     <li><a href="logOut.php">LogOut</a></b></li>
+                     <li><a href="../../Controllers/logOut.php">LogOut</a></b></li>
 
                                 </ul>
  
@@ -90,26 +90,26 @@ $_SESSION['calledFrom']['previousPage']='restaurantOwnerViewingProfile.php';
                         <table border="1" align="center" width="80%"  >    
                       <tr><td   align="center"  > 
                         <?php  if(isset($_COOKIE['restaurantName']))
-                                    {   if(file_exists("restaurantDP/".$_COOKIE['restaurantName'].".jpg"))
-                                                      {echo '<img    style="border:5px solid #000000; padding:3px; margin:5px"; src="restaurantDP/'.trim($_COOKIE['restaurantName']).'.jpg?t='.time().'" height="120px" width="120px"></img><br><br>';} 
+                                    {   if(file_exists("../../Assets/restaurantDP/".$_COOKIE['restaurantName'].".jpg"))
+                                                      {echo '<img    style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/restaurantDP/'.trim($_COOKIE['restaurantName']).'.jpg?t='.time().'" height="120px" width="120px"></img><br><br>';} 
                             
-                                      else{            echo '<img    style="border:5px solid #000000; padding:3px; margin:5px"; src="default_dp.jpg" height="120px" width="120px"></img><br><br>';    }
+                                      else{            echo '<img    style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/blank.jpg" height="120px" width="120px"></img><br><br>';    }
                                     }
 
-                                 else{echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="default_dp.jpg" height="120px" width="120px"></img><br><br>';}   
+                                 else{echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/blank.jpg" height="120px" width="120px"></img><br><br>';}   
                         
                         ?> 
                          </td>
                          
                          <td   align="center"  > 
                         <?php  if(isset($_COOKIE['username']))
-                                    {   if(file_exists("restaurantOwnerDP/".$_COOKIE['username'].".jpg"))
-                                                      {echo '<img    style="border:5px solid #000000; padding:3px; margin:5px"; src="restaurantOwnerDP/'.trim($_COOKIE['username']).'.jpg?t='.time().'" height="120px" width="120px"></img><br><br>';} 
+                                    {   if(file_exists("../../Assets/restaurantOwnerDP/".$_COOKIE['username'].".jpg"))
+                                                      {echo '<img    style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/restaurantOwnerDP/'.trim($_COOKIE['username']).'.jpg?t='.time().'" height="120px" width="120px"></img><br><br>';} 
                             
-                                      else{            echo '<img    style="border:5px solid #000000; padding:3px; margin:5px"; src="default_dp.jpg" height="120px" width="120px"></img><br><br>';    }
+                                      else{            echo '<img    style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/default_dp.jpg" height="120px" width="120px"></img><br><br>';    }
                                     }
 
-                                 else{echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="default_dp.jpg" height="120px" width="120px"></img><br><br>';}   
+                                 else{echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/default_dp.jpg" height="120px" width="120px"></img><br><br>';}   
                         
                         ?> 
                          </td>
@@ -117,11 +117,11 @@ $_SESSION['calledFrom']['previousPage']='restaurantOwnerViewingProfile.php';
                         </tr>
 
                          <tr><td align="center"> 
-                        <form method="POST" action="restaurantDPUploadCheck.php" enctype="multipart/form-data" >
+                        <form method="POST" action="../../Controllers/RestaurantOwner/restaurantDPUploadCheck.php" enctype="multipart/form-data" >
                                 Change Restaurant Picture:  <input type="file" name="myfile" value="" /><br> 
                           <input type="submit" name="submit" value="Update"/>
                         </form>
-                     </td><td   align="center"> <form method="POST" action="dpUploadCheck.php" enctype="multipart/form-data" >
+                     </td><td   align="center"> <form method="POST" action="../../Controllers/RestaurantOwner/restaurantOwnerDPUploadCheck.php" enctype="multipart/form-data" >
                                 Change Profile Picture:  <br> <input type="file" name="myfile" value="" /><br>
                           <input type="submit" name="submit" value="Update"/>
                         </form></td></tr>
@@ -134,7 +134,7 @@ $_SESSION['calledFrom']['previousPage']='restaurantOwnerViewingProfile.php';
                       <tr><td style="padding:10px">Username:                </td><td> <b> <?php echo $_COOKIE['username'];  ?>   </b>     </td></tr> 
                       <tr><td style="padding:10px">E-mail:                  </td><td> <b> <?php echo $_COOKIE['email'];     ?>   </b>     </td></tr> 
                       <tr><td style="padding:10px">Password:                </td><td> <b> <?php echo $_COOKIE['password'];  ?>   </b>     </td></tr> 
-
+                      <tr><td style="padding:10px">Balance:                </td><td> <b> <?php echo 'Tk. '.$_COOKIE['balance'];  ?>   </b>     </td></tr> 
                       <tr><td style="padding:10px">User Type:               </td><td> <b> <?php if(isset($_COOKIE['userType']))
                                                                                                         {if($_COOKIE['userType']=='restaurantOwner'){echo "Restaurant Owner";}}  ?>   </b>     </td></tr> 
                       
@@ -163,7 +163,7 @@ $_SESSION['calledFrom']['previousPage']='restaurantOwnerViewingProfile.php';
                                 </tr>
 
                                 <tr align="center">
-                                    <td colspan="2" ><a href="logOut.php"><p  style="color:red; font-size:20px;"><b>Log Out<b></p></a></td>
+                                    <td colspan="2" ><a href="../../Controllers/logOut.php"><p  style="color:red; font-size:20px;"><b>Log Out<b></p></a></td>
                                 </tr>
                                  
                             </table>

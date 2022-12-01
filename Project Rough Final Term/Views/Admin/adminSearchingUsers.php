@@ -2,25 +2,30 @@
 
 session_start();
 
+require_once "../../Models/userModel.php";
+
 if(!isset($_COOKIE['status'])){
-  header('location: home.php?err=bad_request');
+  header('location: ../home.php?err=bad_request');
 }
 
+ 
 ?>
 
 
 
 <html>
     <head>
-        <title>Admin Viewing Profile</title>
+        <title>Admin Dashboard</title>
     </head>
     <body>
         
+
+    
+        
             <fieldset>
                 <legend><p  style="font-size:20px;">Food Court Management System</p></legend>
-                <table align="center" height="700px" width="700px"  border="1"  >
-                
-                    <tr><td align="center"><h1>Admin Profile Information</h1></td></tr>
+                <table align="center" height="700px" width="700px"  border="1">
+                    <tr><td align="center"><h1>Admin Searching Users</h1></td></tr>
                     <tr><td><hr></td></tr>
 
                    <?php
@@ -37,40 +42,33 @@ if(!isset($_COOKIE['status'])){
                             else if($_GET['message'] == 'profile_picture_change_success'){
                                 echo '<tr><td align="center"><p  style="color:green; font-size:20px;"><b>Profile Picture Changed Successfully!<b></p></td></tr>';  
                             }
- 
-                            else if($_GET['message'] == 'order_placed'){
-                                echo '<tr><td align="center"><p  style="color:green; font-size:20px;"><b>Order Placed Successfully!<b></p></td></tr>';  
+
+                            else if($_GET['message'] == 'restaurant_added'){
+                                echo '<tr><td align="center"><p  style="color:green; font-size:20px;"><b>Restaurant Added Successfully!<b></p></td></tr>';  
                             }
 
-                            
                             
   
                         } 
-
-                        else if(isset($_GET['err']))
-                        {
-                            if($_GET['err'] == 'restaurant_file_empty'){
-                                echo '<tr><td align="center"><p  style="color:red; font-size:20px;"><b> We Are Working On Our Restaurant List, Try Again!<b></p></td></tr>';  
-                            }
-                        }
                       ?>
 
                      
 
                     <tr>
                         <td>
-                            <table align="center" border="1" width="100%" height="100%"   > 
-                             
+                            <table align="center" border="1" width="100%" height="100%"  >
                         
                                 
                                  
                                 <tr>
-                                <td width="30%">
-                      <ul style="line-height:250%">
+                                <td width="30%"  >
+                                 
+                       <ul style="line-height:250%">
 
                       <li><b><a href="adminDashboard.php">Dashboard</a><br></li>
                      <li><a href="adminAddingRestaurants.php">Add Restaurant</a><br></li>
                      <li><a href="adminViewingRestaurants.php">View Restaurants</a><br></li>
+                     <li><a href="adminSearchingUsers.php">Search Users</a><br></li>
                      <li><a href="adminSettingVATRate.php">Set VAT rate</a><br></li>
                      <li><a href="adminViewingProfile.php">View Profile</a></li>
                      <li><a href="adminEditingProfile.php">Edit Profile</a></li>
@@ -78,38 +76,25 @@ if(!isset($_COOKIE['status'])){
                      <li><a href="../../Controllers/logOut.php">LogOut</a></b></li>
 
                     </ul>
- 
+                     
                         </td>
 
                         
 
 
-                        <td>
-                        <table border="1" align="center" width="80%"  style="background-color:#FFFFE0;"> <!╌Skin Color ╌>   
-                      <tr><td colspan="2" align="center" colspan="2"> 
-                        <?php  if(isset($_COOKIE['username']))
-                                    {   if(file_exists("../../Assets/adminDP/".$_COOKIE['username'].".jpg"))
-                                                      {echo '<img    style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/adminDP/'.trim($_COOKIE['username']).'.jpg?t='.time().'" height="120px" width="120px"></img><br><br>';} 
-                            
-                                      else{            echo '<img    style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/default_dp.jpg" height="120px" width="120px"></img><br><br>';    }
-                                    }
-
-                                 else{echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/default_dp.jpg" height="120px" width="120px"></img><br><br>';}   
-                        
-                        ?> 
+                        <td align="center">
+                        <table   width="100%"   >    
+                      <tr><td colspan="2" align="center"> 
+                          Search User: <input type="text" name="typedText" onkeyup="ajax()"> </input>
                          </td></tr>
 
                           
 
                      <tr> <td colspan="2"> <hr>  </td></tr>
 
-
-                      <tr><td style="padding:10px">Username:    </td><td> <b> <?php echo $_COOKIE['username'];  ?>   </b>     </td></tr> 
-                      <tr><td style="padding:10px">E-mail:      </td><td> <b> <?php echo $_COOKIE['email'];     ?>   </b>     </td></tr> 
-                      <tr><td style="padding:10px">Password:    </td><td> <b> <?php echo $_COOKIE['password'];  ?>   </b>     </td></tr> 
-                      
-                      <tr><td style="padding:10px">User Type:   </td><td> <b> <?php echo $_COOKIE['userType'];  ?>   </b>     </td></tr>  
+                     <tr> <td colspan="2">  <h2 ID="here">Results</h2>  </td></tr>
  
+               
 
                        </table>
                        </td>
@@ -131,7 +116,7 @@ if(!isset($_COOKIE['status'])){
                                 </tr>
 
                                 <tr align="center">
-                                    <td colspan="2" ><a href="../../Controllers/logOut.php"><p  style="color:red; font-size:20px;"><b>Log Out<b></p></a></td>
+                                    <td colspan="2"><a href="../../Controllers/logOut.php"><p  style="color:red; font-size:20px;"><b>Log Out<b></p></a></td>
                                 </tr>
                                  
                             </table>
@@ -139,6 +124,30 @@ if(!isset($_COOKIE['status'])){
                     </tr>
                 </table>
             </fieldset>
-         
+            <script>
+        
+
+        function ajax(){
+            let typedText = document.getElementById("typedText").value;
+            let xhttp = new XMLHttpRequest();
+            document.getElementsByID("here").innerHTML = typedText;
+
+            xhttp.open('POST', 'nameCheck.php', true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send('typedText='+typedText);
+            xhttp.onreadystatechange = function(){
+                
+                if(this.readyState == 4 && this.status == 200){
+                    //alert(this.responseText);
+                    document.getElementsByID("here").innerHTML = this.responseText;
+                }
+                
+            }
+        }
+    </script>
     </body>
+
+    
+
+
     </html>

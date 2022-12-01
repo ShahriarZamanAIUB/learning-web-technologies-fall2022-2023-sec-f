@@ -1,6 +1,8 @@
 <?php
     session_start();
     require_once "../Models/userModel.php";
+    require_once "../Models/restaurantModel.php";
+    
     $username = $_POST['username'];
     $password = $_POST['password'];
     $userType = $_POST['userType'];
@@ -11,7 +13,7 @@
 
     $loginStatus=false;
 
-    if($username == "" || $password == "" || $userType==""){
+    if($username == "" || $password == "" ){
         header('location: ../Views/home.php?err=null');
     } 
 
@@ -20,36 +22,36 @@
     }
 
     else
-    {  $filename;
+    { /* $filename;
         $php_filename;
-        $db_table_name;
+        
         
         switch ($userType) {
 
          case 'admin':
-            $db_table_name='allAdmins';  $php_filename='../Views/Admin/adminDashboard.php';
+               $php_filename='../Views/Admin/adminDashboard.php';
           break;
 
         case 'foodCourtManager':
-            $db_table_name='allFoodCourtManagers';  $php_filename='../Views/FoodCourtManager/foodCourtManagerDashboard.php';
+              $php_filename='../Views/FoodCourtManager/foodCourtManagerDashboard.php';
           break;
 
         case 'restaurantManager':
-            $db_table_name='allRestaurantManagers'; $php_filename='../Views/RestaurantManager/restaurantManagerDashboard.php';
+              $php_filename='../Views/RestaurantManager/restaurantManagerDashboard.php';
           break;
 
         case  'restaurantOwner':
-            $db_table_name='allRestaurantOwners';    $php_filename='../Views/RestaurantOwner/restaurantOwnerDashboard.php';
+                $php_filename='../Views/RestaurantOwner/restaurantOwnerDashboard.php';
           break;
 
         case  'customer':
-            $db_table_name='allUsers';          $php_filename='../Views/Customer/customerDashboard.php';
+               $php_filename='../Views/Customer/customerDashboard.php';
             break;
            
            
         default:
         header('location: ../Views/home.php?err=null');
-      }
+      } */
 
 
 
@@ -69,12 +71,26 @@
 
         if($loginStatus==true)
         { 
-          setUserCookies($user,72);
+           
 
               
             // echo "bazinga";
             
            $_SESSION['user']['selectedUserType']=$userType;
+
+           $php_filename=dashboardFetcher($user);
+
+           if($user["userType"]=="restaurantOwner" )
+           {
+            $user["restaurantName"]=fetchRestaurantNameForOwner($user);
+
+            $user["restaurantBalance"]=fetchRestaurantBalanceForOwner($user);
+
+            $user["restaurantAddress"]=fetchRestaurantAddressForOwner($user);
+
+           }
+
+           setUserCookies($user,72);
 
             header('location: '.$php_filename.'?message=log_in_success');
            

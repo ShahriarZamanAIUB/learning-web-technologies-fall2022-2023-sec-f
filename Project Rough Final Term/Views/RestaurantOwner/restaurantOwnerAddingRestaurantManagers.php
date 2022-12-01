@@ -3,7 +3,7 @@
 session_start();
 
 if(!isset($_COOKIE['status'])){
-  header('location: home.php?err=bad_request');
+  header('location: ../home.php?err=bad_request');
 }
 
 ?>
@@ -12,14 +12,14 @@ if(!isset($_COOKIE['status'])){
 
 <html>
     <head>
-        <title>Admin Adding Restaurants</title>
+        <title>Restaurant Owner Adding Managers</title>
     </head>
     <body>
         
             <fieldset>
                 <legend><p  style="font-size:20px;">Food Court Management System</p></legend>
                 <table align="center" height="700px" width="800px"  border="1">
-                    <tr><td align="center"><h1>Add Restaurants<p style="color:green">(Admin)</p></h1></td></tr>
+                    <tr><td align="center"><h1>Add Managers<p style="color:green">(Restaurant Owner)</p></h1></td></tr>
                     <tr><td><hr></td></tr>
 
                    <?php
@@ -68,20 +68,21 @@ if(!isset($_COOKIE['status'])){
                                  
                                 <tr>
                                 <td width="30%">
-                      <ul style="line-height:250%">
+                                <ul style="line-height:250%">
 
-                      <li><b><a href="adminDashboard.php">Dashboard</a><br></li>
-                     <li><a href="adminAddingRestaurants.php">Add Restaurant</a><br></li>
-                     <li><a href="adminViewingRestaurants.php">View Restaurants</a><br></li>
-                     <li><a href="adminSettingVATRate.php">Set VAT rate</a><br></li>
-                     <li><a href="adminViewingProfile.php">View Profile</a></li>
-                     <li><a href="adminEditingProfile.php">Edit Profile</a></li>
-                     
-                     <li><a href="../../Controllers/logOut.php">LogOut</a></b></li>
+                            <li><b><a href="restaurantOwnerDashboard.php">Dashboard</a><br></li>
+                            <li><a href="restaurantOwnerAddingRestaurantManagers.php">Add Managers</a><br></li>
+                            <li><a href="restaurantOwnerAddingFoodItems.php">Add Food Item</a><br></li>
+                            <li><a href="restaurantOwnerViewingMenu.php">View Menu</a><br></li>
+                            <li><a href="restaurantOwnerViewingOrders.php">Approve Orders</a><br></li>
+                            <li><a href="restaurantOwnerViewingProfile.php">View Profile</a></li>
+                            <li><a href="editProfile.php">Edit Profile</a></li>
+                            <li><a href="../../Controllers/logOut.php">LogOut</a></b></li>
 
-                    </ul>
+                            </ul>
+
  
-                        </td>
+                            </td>
 
                         
 
@@ -90,9 +91,9 @@ if(!isset($_COOKIE['status'])){
                         <table border="1" align="center">    
                       
 
-                      <form method="post" action="../../Controllers/Admin/adminAddingRestaurantsCheck.php" enctype="" >  
+                      <form method="post" action="../../Controllers/restaurantOwner/restaurantOwnerAddingRestaurantManagersCheck.php" enctype="" >  
                       
-                     <tr> <td colspan="2" align="center"><h2> Enter Info of The New Restaurant  <h2>  </td></tr>
+                     <tr> <td colspan="2" align="center"><h2> Enter Info of The New Manager  <h2>  </td></tr>
                      <tr> <td colspan="2"> <hr>  </td></tr>
 
                    
@@ -100,12 +101,12 @@ if(!isset($_COOKIE['status'])){
 
 
 
-                      <tr><td style="padding:10px">Restaurant Name:  </td>  <td><input style="width: 230px; height: 30px;" type="text"     name="restaurantName"          value=""       placeholder="Restaurant Name">  </td></tr> 
-                      <tr><td style="padding:10px">Restaurant Address: </td><td><input style="width: 230px; height: 30px;" type="text"     name="restaurantAddress"       value=""       placeholder="Restaurant Adress"> </td> </tr>
-                      <tr><td style="padding:10px">Balance (Tk.): </td><td>     <input style="width: 230px; height: 30px;" type="number"   name="restaurantBalance"       value="100000" placeholder="Restaurant Balance"> </td> </tr>
-                      <tr><td style="padding:10px">Owner Userame: </td><td>     <input style="width: 230px; height: 30px;" type="text"     name="restaurantOwnerName"     value=""       placeholder="Restaurant Owner's Name"> </td> </tr>
-                      <tr><td style="padding:10px">Owner E-mail:  </td><td>     <input style="width: 230px; height: 30px;" type="text"     name="restaurantOwnerEmail"    value=""       placeholder="Restaurant Owner's E-mail"> </td> </tr>
-                      <tr><td style="padding:10px">Owner Password: </td><td>    <input style="width: 230px; height: 30px;" type="password" name="restaurantOwnerPassword" value=""       placeholder="Restaurant Owner's Password"> </td> </tr>
+ 
+                      <tr><td style="padding:10px">Manger Userame: </td><td>     <input style="width: 230px; height: 30px;" type="text"     name="restaurantManagerName"     value=""       placeholder="Restaurant Manager's Name"> </td> </tr>
+                      <tr><td style="padding:10px">Manger E-mail:  </td><td>     <input style="width: 230px; height: 30px;" type="text"     name="restaurantManagerEmail"    value=""       placeholder="Restaurant Manager's E-mail"> </td> </tr>
+                      <tr><td style="padding:10px">Manger Password: </td><td>    <input style="width: 230px; height: 30px;" type="password" name="restaurantManagerPassword" value=""       placeholder="Restaurant Manager's Password"> </td> </tr>
+                      <tr><td style="padding:10px">Manger Salary: </td><td>    <input style="width: 230px; height: 30px;" type="number"     name="restaurantManagerSalary"   value=""    placeholder="Restaurant Manager's Salary"> </td> </tr>
+                      <tr><td style="padding:10px">Manger Address: </td><td>    <input style="width: 230px; height: 30px;" type="text"     name="restaurantManagerAddress"  value=""   placeholder="Restaurant Manager's Address"> </td> </tr>
                      
                       <tr><td align="center" colspan="2" style="padding:10px"> <input type="submit" name="" value="Register"> &nbsp <input type="reset" name="" value="Reset"> </td></tr>
                       </form>

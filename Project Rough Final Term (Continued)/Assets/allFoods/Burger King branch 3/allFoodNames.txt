@@ -1,2 +1,0 @@
-regular burger|100
-beef burger|343

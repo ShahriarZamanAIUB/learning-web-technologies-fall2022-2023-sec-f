@@ -10,7 +10,7 @@
     
   //  if(!isset($_FILES['myfile']['tmp_name'])){header('location: restaurantOwnerChoosingFoodItemImage.php?message=food_item_image_not_selected');}
 
-    $des ='allFoods/'.$restaurantName.'/'.$foodItemName.'.jpg';
+    $des ='../../Assets/allFoods/'.$restaurantName.'/'.$foodItemName.'.jpg';
       
       
 

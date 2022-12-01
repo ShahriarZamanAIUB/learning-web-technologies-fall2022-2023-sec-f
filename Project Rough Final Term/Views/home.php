@@ -75,7 +75,7 @@ if(isset($_COOKIE['status'])){
                             <table align="center" border="1" width="400px" height="400px" >
                                 <tr  >
                                    <td colspan="2" >  <p  style="font-size:20px;"><b>Please Select User Type:  </b> </p></td>
-                                </tr>
+                                </tr><!--
                                 <tr>
                                     <td align="center">
                                         <input type="radio" name="userType" value="admin">
@@ -105,7 +105,7 @@ if(isset($_COOKIE['status'])){
                                     <td>
                                         <b>Customer</b>
                                     </td>
-                                </tr>
+                                </tr> -->
 
                                 <tr>
                                     <td colspan="2"><hr></td>
@@ -115,8 +115,8 @@ if(isset($_COOKIE['status'])){
                                     <td align="center">
                                         <b>Username:</b>
                                     </td>
-                                    <td>
-                                        <input style="height: 30px;" type="text" name="username" ID="username" value="" placeholder="Username">
+                                    <td >
+                                        <input style="height: 30px;width: 200px;" type="text" name="username" ID="username" value="" placeholder="Username">
                                     </td>
                                 </tr>
                                 
@@ -125,7 +125,7 @@ if(isset($_COOKIE['status'])){
                                         <b>Password:</b>
                                     </td>
                                     <td>
-                                        <input style="height: 30px;" type="password" name="password" ID="password" value="" placeholder="Password">
+                                        <input style="height: 30px;width: 200px;" type="password" name="password" ID="password" value="" placeholder="Password">
                                     </td>
                                 </tr>
 

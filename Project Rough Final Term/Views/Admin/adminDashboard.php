@@ -2,13 +2,15 @@
 
 session_start();
 
+require_once "../../Models/userModel.php";
+
 if(!isset($_COOKIE['status'])){
-  header('location: home.php?err=bad_request');
+  header('location: ../home.php?err=bad_request');
 }
 
 $count=0;
 
-$file=fopen('allRestaurantOwners.txt','r');
+$file=fopen('../../Assets/allRestaurantOwners.txt','r');
  
 
 while(!feof($file))
@@ -24,7 +26,7 @@ fclose($file);
 
 $current_vat_rate=0;
 
-$file=fopen('VAT.txt','r');
+$file=fopen('../../Assets/VAT.txt','r');
  
 
 while(!feof($file))
@@ -44,7 +46,7 @@ fclose($file);
 $adminBalance=0;
 
 
-$FILE=fopen('allOrders.txt','r');
+$FILE=fopen('../../Assets/allOrders.txt','r');
  
 
 while(!feof($FILE))
@@ -88,6 +90,9 @@ $i=0;
     </head>
     <body>
         
+
+    
+        
             <fieldset>
                 <legend><p  style="font-size:20px;">Food Court Management System</p></legend>
                 <table align="center" height="700px" width="700px"  border="1">
@@ -127,20 +132,22 @@ $i=0;
                                 
                                  
                                 <tr>
-                                <td width="30%">
-                      <ul style="line-height:250%">
+                                <td width="30%"  >
+                                 
+                       <ul style="line-height:250%">
 
                       <li><b><a href="adminDashboard.php">Dashboard</a><br></li>
                      <li><a href="adminAddingRestaurants.php">Add Restaurant</a><br></li>
                      <li><a href="adminViewingRestaurants.php">View Restaurants</a><br></li>
+                     <li><a href="adminSearchingUsers.php">Search Users</a><br></li>
                      <li><a href="adminSettingVATRate.php">Set VAT rate</a><br></li>
                      <li><a href="adminViewingProfile.php">View Profile</a></li>
                      <li><a href="adminEditingProfile.php">Edit Profile</a></li>
                      
-                     <li><a href="logOut.php">LogOut</a></b></li>
+                     <li><a href="../../Controllers/logOut.php">LogOut</a></b></li>
 
                     </ul>
- 
+                     
                         </td>
 
                         
@@ -150,19 +157,19 @@ $i=0;
                         <table border="1"  >    
                       <tr><td colspan="2" align="center"> 
                         <?php  if(isset($_COOKIE['username']))
-                                    {   if(file_exists("adminDP/".$_COOKIE['username'].".jpg"))
-                                                      {echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="adminDP/'.trim($_COOKIE['username']).'.jpg?t='.time().'" height="120px" width="120px"></img><br><br>';} 
+                                    {   if(file_exists("../../Assets/adminDP/".$_COOKIE['username'].".jpg"))
+                                                      {echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/adminDP/'.trim($_COOKIE['username']).'.jpg?t='.time().'" height="120px" width="120px"></img><br><br>';} 
                             
-                                      else{            echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="default_dp.jpg" height="120px" width="120px"></img><br><br>';    }
+                                      else{            echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/default_dp.jpg" height="120px" width="120px"></img><br><br>';    }
                                     }
 
-                                 else{echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="default_dp.jpg" height="120px" width="120px"></img><br><br>';}   
+                                 else{echo '<img  style="border:5px solid #000000; padding:3px; margin:5px"; src="../../Assets/default_dp.jpg" height="120px" width="120px"></img><br><br>';}   
                         
                         ?> 
                          </td></tr>
 
                          <tr> <td align="center" colspan="2"> 
-                        <form method="POST" action="adminDPUploadCheck.php" enctype="multipart/form-data" >
+                        <form method="POST" action="../../Controllers/Admin/adminDPUploadCheck.php" enctype="multipart/form-data" >
                                 Change Profile Picture:  <input type="file" name="myfile" value="" />
                         <br>  <br>     <input type="submit" name="submit" value="Update"/>
                         </form>
@@ -172,8 +179,9 @@ $i=0;
 
 
                       <tr><td style="padding:10px">Username: </td><td align="center"><b><?php echo $_COOKIE["username"]; ?></b></td></tr> 
-                      <tr><td style="padding:10px">Restaurants:</td><td align="center"><b> <?php echo $count; ?></b> </td> </tr>
-                      <tr><td style="padding:10px">Balance:</td><td align="center"><b> <?php echo ' Tk. '.$adminBalance; ?></b> </td> </tr>
+                      <tr><td style="padding:10px">Total Restaurants:</td><td align="center"><b> <?php echo $count; ?></b> </td> </tr>
+                      <tr><td style="padding:10px">Total Users:</td><td align="center"><b> <?php echo userRowCount(); ?></b> </td> </tr>
+                      <tr><td style="padding:10px">Balance:</td><td align="center"><b> <?php echo "Tk. ".$_COOKIE["balance"]; ?></b> </td> </tr>
 
 
                        </table>
@@ -196,7 +204,7 @@ $i=0;
                                 </tr>
 
                                 <tr align="center">
-                                    <td colspan="2"><a href="logOut.php"><p  style="color:red; font-size:20px;"><b>Log Out<b></p></a></td>
+                                    <td colspan="2"><a href="../../Controllers/logOut.php"><p  style="color:red; font-size:20px;"><b>Log Out<b></p></a></td>
                                 </tr>
                                  
                             </table>

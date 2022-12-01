@@ -78,7 +78,7 @@ fclose($file); */
                      <li><a href="adminViewingProfile.php">View Profile</a></li>
                      <li><a href="adminEditingProfile.php">Edit Profile</a></li>
                      
-                     <li><a href="logOut.php">LogOut</a></b></li>
+                     <li><a href="../../Controllers/logOut.php">LogOut</a></b></li>
 
                     </ul>
  
@@ -130,7 +130,7 @@ fclose($file); */
                                 </tr>
 
                                 <tr align="center">
-                                    <td colspan="2"><a href="logOut.php"><p  style="color:red; font-size:20px;"><b>Log Out<b></p></a></td>
+                                    <td colspan="2"><a href="../../Controllers/logOut.php"><p  style="color:red; font-size:20px;"><b>Log Out<b></p></a></td>
                                 </tr>
                                  
                             </table>

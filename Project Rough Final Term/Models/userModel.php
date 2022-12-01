@@ -2,6 +2,9 @@
   
   require_once "db.php";
 
+  require_once "restaurantModel.php";
+
+
     function login($user){
         $con = getConnection();
         $sql = "select * from allusers where username='{$user['username']}' and password='{$user['password']}'";
@@ -63,7 +66,7 @@
         else{return false;}
     }
 
-    function insertUser($user){
+  /*  function insertUser($user){
         $con = getConnection();
         $sql = "insert into allUsers values('{$user['username']}', '{$user['password']}', '{$user['email']}' , '{$user['address']}' , '{$user['balance']}' , '{$user['userType']}')";
         $status = mysqli_query($con, $sql);
@@ -73,6 +76,38 @@
         
         
         else{return false;}
+    } */
+
+
+    function insertUser($user){
+
+        $con = getConnection();
+        $sql = "select max(userid)+1 newid from allusers";
+        $status = mysqli_query($con, $sql);
+
+        $result = mysqli_query($con, $sql);
+        $count = mysqli_num_rows($result);
+
+        if($count > 0){
+
+            while($row = mysqli_fetch_array($result)) {
+
+                $new_id=$row["newid"];
+          
+            }
+            
+           // echo  $new_id;
+
+           $con = getConnection();
+           $sql = "insert into allUsers values('{$user['username']}','{$new_id}', '{$user['password']}', '{$user['email']}' , '{$user['address']}' , '{$user['balance']}' , '{$user['userType']}')";
+             
+           $status = mysqli_query($con, $sql);
+
+           if($status){ return true;} 
+             else{return false;}
+
+
+        } else{return false;}
     }
 
 
@@ -91,12 +126,16 @@
 
         setcookie('balance', $user['balance'], time()+60*60*$hours, '/');
         
-        if($user['userType']=="restaurantManager" || $user['userType']=="foodCourtManager")
+          if($user['userType']=="restaurantOwner" || $user['userType']=="restaurantManager")
         {
 
-            setcookie('salary', $user['salary'], time()+60*60*$hours, '/');
+            setcookie('restaurantName', $user['restaurantName'], time()+60*60*$hours, '/');
 
-        }
+            setcookie('restaurantBalance', $user['restaurantBalance'], time()+60*60*$hours, '/');
+
+            setcookie('restaurantAddress', $user['restaurantAddress'], time()+60*60*$hours, '/');
+
+        }   
      
 
     }
@@ -119,6 +158,84 @@
     {
 
     }
+
+    function dashboardFetcher($user)
+    {
+        
+        $php_filename;
+        
+        
+        switch ($user["userType"]) {
+
+         case 'admin':
+               $php_filename='../Views/Admin/adminDashboard.php';
+          break;
+
+        case 'foodCourtManager':
+              $php_filename='../Views/FoodCourtManager/foodCourtManagerDashboard.php';
+          break;
+
+        case 'restaurantManager':
+              $php_filename='../Views/RestaurantManager/restaurantManagerDashboard.php';
+          break;
+
+        case  'restaurantOwner':
+                $php_filename='../Views/RestaurantOwner/restaurantOwnerDashboard.php';
+          break;
+
+        case  'customer':
+               $php_filename='../Views/Customer/customerDashboard.php';
+            break;
+           
+           
+        default:
+        header('location: ../Views/home.php?err=null');
+      }
+
+      return $php_filename;
+        
+    }
+
+
+
+    function userRowCount()
+    {
+      
+        $con = getConnection();
+        $sql = "select count(*) count from allusers";
+        $result = mysqli_query($con, $sql);
+        $count = mysqli_num_rows($result);
+
+
+        if($count > 0){
+
+            while($row = mysqli_fetch_array($result)) {
+                $userRowCount=$row["count"];
+            }
+            
+            return $userRowCount;
+             
+        } 
+
+        else{ return 0;}
+
+
+    }
+
+    function idSuffix($user)
+    {
+      if($user["userType"]=="customer") {return "C";}
+
+      else if($user["userType"]=="restaurantOwner") {return "RO";}
+
+      else if($user["userType"]=="restaurantManager") {return "RM";}
+
+      else { return false;}
+
+
+    }
+
+
 
     function fetchUser($user)
     {
