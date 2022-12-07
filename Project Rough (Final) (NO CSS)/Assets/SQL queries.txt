@@ -1,0 +1,51 @@
+ 
+
+CREATE TABLE allusers (
+ username varchar(30),
+ userid varchar(7) primary key,
+ password varchar(20), 
+ email varchar(30), 
+ address varchar(30),
+ balance int(8),
+ usertype varchar(20)
+)
+
+
+INSERT INTO `allusers2`(`username`, `personid`, `password`, `email`, `address`, `balance`, `usertype`) 
+VALUES ('Shahriar1',1,'12345678!','shahriarzaman44@gmail.com','Nakhalpara Dhaka',20000,'customer');
+
+
+insert into allusers2 values("Shahriar1",1,"12345678!","shahriarzaman44@gmail.com","Nakhalpara Dhaka",20000,"customer");
+
+
+ 
+
+#insert into allusers2 values("Shahriar1",1,"12345678!","shahriarzaman44@gmail.com","Nakhalpara Dhaka",20000,"customer");
+
+insert into allusers2 values("Shahriar2",(select max(userid)+1 from allusers2),"12345678!","shahriar2zaman44@gmail.com","Nakhalpara Dhaka",202000,"customer");
+
+
+ varchar(30)
+
+insert into allusers2 values("mr_admin","0A","mr_admin!","mr_admin@gmail.com","Lalmatia",21000,"admin");
+
+
+
+delete from allusers where userid=(select max(userid) from allusers);
+
+delete from allrestaurants where id =(select max(id) from allrestaurants);
+
+
+
+
+CREATE TABLE restaurantsandfooditems (
+ restaurantname varchar(40),
+ restaurantid int,
+ fooditemname varchar(40),
+ fooditemid int primary key,
+ fooditemprice int
+ 
+)
+
+
+
