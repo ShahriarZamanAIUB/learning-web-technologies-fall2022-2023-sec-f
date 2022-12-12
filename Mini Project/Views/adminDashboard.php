@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_COOKIE['status'])){
-        header('location: login.php?err=bad_request');
+        header('location: home.php?err=bad_request');
     }
 
 ?>
@@ -34,7 +34,7 @@
 	
 	<p style="text-align:right;"> 
     <?php  echo "Logged in as ".$_COOKIE['username'];?>
-	<a href="logout.php">&nbspLogOut</a>
+	<a href="../Controllers/logout.php">&nbspLogOut</a>
 	 
 	
 	</p>
@@ -51,12 +51,12 @@
 
               <tr><td align="center">
 
-              <h1>Welcome</h1>
+              <h1>Welcome <?php echo " ".$_COOKIE["username"]; ?></h1>
               <h2><a href="viewProfile.php">View Profile</a></h2>
               <h2><a href="viewUsers.php">View Users</a></h2>
               <h2><a href="changePassword.php">Change Password</a></h2>
 
-              <h2><a href="logout.php">Log Out</a></h2>
+              <h2><a href="../Controllers/logout.php">Log Out</a></h2>
                       
  
               </td>

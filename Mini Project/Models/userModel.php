@@ -70,6 +70,41 @@ function login($user){
 }
 
 
+function checkEmail($user){
+    $con = getConnection();
+    $sql = "select * from users where email='{$user['email']}'";
+    $result = mysqli_query($con, $sql);
+    $count = mysqli_num_rows($result);
+
+    if($count > 0){return true;}
+    
+    else{return false;}
+}
+
+
+function checkUsername($user){
+    $con = getConnection();
+    $sql = "select * from users where username='{$user['username']}'";
+    $result = mysqli_query($con, $sql);
+    $count = mysqli_num_rows($result);
+
+    if($count > 0){return true;}
+    
+    else{return false;}
+}
+
+
+function checkID($user){
+    $con = getConnection();
+    $sql = "select * from users where id='{$user['id']}'";
+    $result = mysqli_query($con, $sql);
+    $count = mysqli_num_rows($result);
+
+    if($count > 0){return true;}
+    
+    else{return false;}
+}
+
 
 
 

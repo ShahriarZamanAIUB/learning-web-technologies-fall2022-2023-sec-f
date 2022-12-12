@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once  "userModel.php";
+    require_once  "../Models/userModel.php";
 
 
     $username = $_POST['username'];
@@ -9,7 +9,7 @@
  
 
     if($username == "" || $password == ""){
-        header('location: login.php?err=null');
+        header('location: ../Views/login.php?err=null');
 
     }
     
@@ -35,14 +35,14 @@
 
         echo $user['userType'];
 
-         if( login($user)['userType']=="user"){  header('location: userDashboard.php?message=reg_success');}
-         else {  header('location: adminDashboard.php?message=reg_success');}
+         if( login($user)['userType']=="user"){  header('location: ../Views/userDashboard.php?message=login_success');}
+         else {  header('location: ../Views/adminDashboard.php?message=login_success');}
 
 
      }
 
 
-       // else{header('location: login.php?err=invalid');}
+        else{header('location: ../Views/login.php?err=invalid');}
     }
 
 ?>

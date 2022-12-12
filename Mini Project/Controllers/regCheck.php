@@ -1,7 +1,7 @@
 <?php
      session_start();
 
-     require_once  "userModel.php";
+     require_once  "../Models/userModel.php";
 
      $user['username']= $_POST['username'];
      $user['password']= $_POST['password'];
@@ -25,12 +25,12 @@
          
          setcookie('userType',$user['userType'],time()+60*60,'/');
 
-         if( $user['userType']=="User"){  header('location: userDashboard.php?message=reg_success');}
-         else {  header('location: adminDashboard.php?message=reg_success');}
+         if( $user['userType']=="user"){  header('location: ../Views/userDashboard.php?message=reg_success');}
+         else {  header('location: ../Views/adminDashboard.php?message=reg_success');}
 
      }
 
-     else{ echo "Registration Failed!"; header('location: registration.php?message=reg_failed');}
+     else{ echo "Registration Failed!"; header('location: ../Views/registration.php?message=reg_failed');}
       
 
 ?>

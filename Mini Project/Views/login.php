@@ -12,7 +12,7 @@ session_start();
     <head>
         <title>Log In</title>
     </head>
-    <body>
+    <body><script src="../Assets/loginScript.js"></script>
 	 
 	<table border="1">
 	
@@ -31,9 +31,9 @@ session_start();
 	<tr><td>
         <fieldset style="width:350px">
 			<legend>LOGIN</legend>
-        <form method="post" action="loginCheck.php" enctype="">
-            Username: <input type="text" name="username" value=""/> <br>
-            Password: <input type="password" name="password" value=""/> <br>
+        <form method="post" action="../Controllers/loginCheck.php" enctype=""  >
+            Username: <input type="text" name="username" ID="username" > <br>
+            Password: <input type="password" name="password" ID="password" > <br>
 			 <input type="checkbox" name="checkbox"/> Remember Me<br> <br>
              <input type="submit" name="btn" value="Log In"/>
 			 <a href=registration.php>Registration</a>
